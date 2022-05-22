@@ -2,8 +2,8 @@
 Author: Devesh Singh
 Date: 22.05.2022
 
-Explains the model Cycle-WGAN-SM. 
-Where the Cycle-WGAN model's geenrator are also constrained by the novel semantic loss (SM).   
+The model Cycle-WGAN-SM, where the genrator networks are also constrained by the novel semantic loss (SM).
+The code here modifies the official tensorflow implementation of the CycleGAN models: https://www.tensorflow.org/tutorials/generative/cyclegan
 '''
 
 from numpy import True_
@@ -13,7 +13,7 @@ import time
 from datetime import datetime
 import Manage as m
 
-m.limit_GPU(2)
+m.limit_GPU(0)
 
 ##--------------------------------------------  INPUT PIPELINE  --------------------------------------------
 n_critic = 5 
