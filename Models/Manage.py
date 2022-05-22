@@ -2,7 +2,7 @@
 Author: Devesh Singh
 Date: 22.05.2022 
 
-A Util file, used to manage the preprocessing, loading and saving actions of the models. 
+An util file used to manage the preprocessing, loading and saving actions of the models. 
 '''
 
 
@@ -96,21 +96,21 @@ def files_names_sim(path, RemoveEmptyFiles=False, RemoveBags=False):
 
 
     if RemoveBags==False:
-      with open ("/data/people/tsingde/thesis/bag_only_dict.json","r") as f_bag:
+      with open ("/bag_only_dict.json","r") as f_bag:
         bag_only_dict = json.load(f_bag)
-      with open ("/data/people/tsingde/thesis/box_and_bag_dict.json","r") as f_box_bag:
+      with open ("/box_and_bag_dict.json","r") as f_box_bag:
         box_bag_dict = json.load(f_box_bag)
       filesnames_all += list(bag_only_dict.keys())
       filesnames_all += list(box_bag_dict.keys())
     
 
     if RemoveEmptyFiles==False:
-      with open ("/data/people/tsingde/thesis/empty_dict.json","r") as f_empty:
+      with open ("/empty_dict.json","r") as f_empty:
         empty_dict = json.load(f_empty)
       filesnames_all += list(empty_dict.keys())
 
 
-    with open ("/data/people/tsingde/thesis/box_only_dict.json","r") as f_box:
+    with open ("/box_only_dict.json","r") as f_box:
       box_only_dict = json.load(f_box)
     #Repeating box images to correct the ratio of labels in the simulated domain
     filesnames_all +=  list(box_only_dict.keys()) + list(box_only_dict.keys())
