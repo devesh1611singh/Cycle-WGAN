@@ -34,7 +34,7 @@ See model architecture at:
 
 Notice the addition of $n_c$ steps - the number of steps a discriminator (or critic) trains for every generator step. Also notice that now the discriminator networks do not make a binary classification of - real or fake anymore, but rather output a distance metric $\in \mathbb{R}$.
 
-A successful attempt at unsupervised I2I translation between the two domains - Aerial images and Maps, by the Cycle-WGAN could be seen in directory named Results.
+A successful attempt at I2I translation between the two domains - Aerial images and Maps, by the Cycle-WGAN could be seen in the directory named Results.
 
 
 ## Cycle-WGAN-SM
@@ -43,7 +43,7 @@ Even with the Wasserstein metric regularization, the Cycle-WGAN model itroduce s
 
 To control the semantic errors, a novel semantic loss (SM) was introduced to the Cycle-WGAN models. To evaluate the semantic loss, images before and after translation are passed through a feature extractor network $F_{ext}(\cdot)$, pre-trained on the ImageNet data set. Features from this network are collected just before the fully connected layers which are used for classification and are compared to calculate the loss. ResNet50 and MobileNetv2 were chosen as possible feature extractor networks.
 
-Formally, semantic loss could be described as:
+Formally, the semantic loss could be described as:
 
 $$
 \begin{aligned} 
