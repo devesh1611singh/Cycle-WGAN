@@ -5,6 +5,7 @@ Date: 22.05.2022
 Explains the model Cycle-WGAN. Where inside the CycleGAN architecture, the generator and discriminator models are trained used Wasserstein distance metric soft 
 constrained by the gradient penalty.  
 '''
+
 from numpy import True_
 import tensorflow as tf
 from tensorflow_examples.models.pix2pix import pix2pix
@@ -32,7 +33,7 @@ sample_sim = next(iter(sim_dataset))
 
 ##--------------------------------------------  Import and reuse the Pix2Pix models  --------------------------------------------
 
-OUTPUT_CHANNELS = 4
+OUTPUT_CHANNELS = 4            
 INPUT_CHANNELS = 4
 
 generator_g = pix2pix.unet_generator(output_channels=OUTPUT_CHANNELS, norm_type='instancenorm', INPUT_CHANNELS=INPUT_CHANNELS, ch=1)
