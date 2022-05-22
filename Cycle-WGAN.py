@@ -245,4 +245,4 @@ def main(EPOCHS = 10, testing=False , experiment_flag='_testing'):
   m.trained_check(generator_f,time_path+experiment_flag)
 
 
-main(20,False,'_exp2_Cycle-WGAN')
+main(20,False,'_Cycle-WGAN')
