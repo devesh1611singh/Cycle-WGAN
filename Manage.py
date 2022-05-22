@@ -1,3 +1,11 @@
+'''
+Author: Devesh Singh
+Date: 22.05.2022 
+
+A Util file, used to manage the preprocessing, loading and saving actions of the models. 
+'''
+
+
 import tensorflow as tf
 import os
 import matplotlib.pyplot as plt
