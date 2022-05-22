@@ -2,8 +2,8 @@
 Author: Devesh Singh
 Date: 22.05.2022
 
-Explains the model Cycle-WGAN. Where inside the CycleGAN architecture, the generator and discriminator models are trained used Wasserstein distance metric soft 
-constrained by the gradient penalty.  
+Explains the model Cycle-WGAN. Where inside the CycleGAN architecture, the generator and discriminator models are trained used Wasserstein distance metric 
+soft constrained by the gradient penalty. The code here modifies the official tensorflow implementation of the CycleGAN models: https://www.tensorflow.org/tutorials/generative/cyclegan
 '''
 
 from numpy import True_
@@ -13,7 +13,7 @@ import time
 from datetime import datetime
 import Manage as m
 
-m.limit_GPU(2)
+m.limit_GPU(0)
 
 ##--------------------------------------------  INPUT PIPELINE  --------------------------------------------
 n_critic = 5 
