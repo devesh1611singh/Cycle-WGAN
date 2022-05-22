@@ -29,4 +29,5 @@ $$
 
 Where  $\lambda_{c}L_{cyc}(G,F)$ is the cycle consistency loss and the $\lambda_{i}L_{identity}(G, F)$ is the identity loss used in the standard CycleGANs.
 
-![alt text](https://github.com/[devesh1611singh]/[Cycle-WGAN]/tree/[main]/[ModelArchitecture]/Cycle-WGAN.pdf?raw=true)
+See model architecture at:
+![alt text](https://github.com/devesh1611singh/Cycle-WGAN/blob/main/ModelArchitecture/Cycle-WGAN.pdf?raw=true)
