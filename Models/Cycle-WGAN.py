@@ -33,13 +33,13 @@ sample_sim = next(iter(sim_dataset))
 
 ##--------------------------------------------  Import and reuse the Pix2Pix models  --------------------------------------------
 
-OUTPUT_CHANNELS = 4            
-INPUT_CHANNELS = 4
+OUTPUT_CHANNELS = 3            
+INPUT_CHANNELS = 3
 
 generator_g = pix2pix.unet_generator(output_channels=OUTPUT_CHANNELS, norm_type='instancenorm', INPUT_CHANNELS=INPUT_CHANNELS, ch=1)
 generator_f = pix2pix.unet_generator(output_channels=OUTPUT_CHANNELS, norm_type='instancenorm', INPUT_CHANNELS=INPUT_CHANNELS, ch=1)
 
-INPUT_CHANNELS = 4
+INPUT_CHANNELS = 3
 discriminator_x = pix2pix.discriminator(norm_type='instancenorm', INPUT_CHANNELS=INPUT_CHANNELS, target=False, ch=1)
 discriminator_y = pix2pix.discriminator(norm_type='instancenorm', INPUT_CHANNELS=INPUT_CHANNELS, target=False, ch=1)
 
