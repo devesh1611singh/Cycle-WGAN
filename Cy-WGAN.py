@@ -40,33 +40,11 @@ discriminator_y = pix2pix.discriminator(norm_type='instancenorm', INPUT_CHANNELS
 LAMBDA = 10
 GP_LAMBDA=10
 
-loss_obj = tf.keras.losses.BinaryCrossentropy(from_logits=True) #, reduction=tf.keras.losses.Reduction.SUM)
-
-def discriminator_loss(real, generated):
-  real_loss = loss_obj(tf.ones_like(real), real)
-
-  generated_loss = loss_obj(tf.zeros_like(generated), generated)
-
-  total_disc_loss = real_loss + generated_loss
-
-  return total_disc_loss * 0.5
-
-def discriminator_loss_WASS(real, generated):
-  return tf.reduce_mean(generated) - tf.reduce_mean(real)
-
 def discriminator_loss_WASS_alt(real, generated):
   return tf.reduce_mean(real) - tf.reduce_mean(generated)
 
-def generator_loss(generated):
-  return loss_obj(tf.ones_like(generated), generated)
-
-def generator_loss_WASS(generated):
-  return -tf.reduce_mean(generated)
-
-
 def generator_loss_WASS_alt(generated):
   return tf.reduce_mean(generated)
-
 
 def calc_cycle_loss(real_image, cycled_image):
   loss1 = tf.reduce_mean(tf.abs(real_image - cycled_image))
@@ -101,8 +79,10 @@ b2 = 0.999
 generator_g_optimizer = tf.keras.optimizers.Adam(lr, b1, b2)     
 generator_f_optimizer = tf.keras.optimizers.Adam(lr, b1, b2)       
 
-discriminator_x_optimizer = tf.keras.optimizers.Adam(lr*5, b1, b2)  
-discriminator_y_optimizer = tf.keras.optimizers.Adam(lr*5, b1, b2)  
+#Training with a bigger learning rate for the discriminator models
+eta = 5
+discriminator_x_optimizer = tf.keras.optimizers.Adam(lr*eta, b1, b2)      
+discriminator_y_optimizer = tf.keras.optimizers.Adam(lr*eta, b1, b2)  
 
 
 ##--------------------------------------------  CHECKPOINTS  --------------------------------------------
@@ -185,14 +165,10 @@ def train_step_GP(real_x, real_y):
     # Identity loss
     identity_loss_real_y_same_y = identity_loss(real_y, same_y)
     identity_loss_real_x_same_x = identity_loss(real_x, same_x)
-    
-    #Semantic Loss
-    #gen_g_sem = LAMBDA * m.semantic_loss(real_x,fake_y)
-    #gen_f_sem = LAMBDA * m.semantic_loss(real_y,fake_x)
 
-    # Total generator loss = adversarial loss + cycle loss + identity loss + semantic loss
-    total_gen_g_loss = gen_g_loss + total_cycle_loss + identity_loss_real_y_same_y #+ gen_g_sem
-    total_gen_f_loss = gen_f_loss + total_cycle_loss + identity_loss_real_x_same_x #+ gen_f_sem
+    # Total generator loss = adversarial loss + cycle loss + identity loss 
+    total_gen_g_loss = gen_g_loss + total_cycle_loss + identity_loss_real_y_same_y 
+    total_gen_f_loss = gen_f_loss + total_cycle_loss + identity_loss_real_x_same_x 
 
     #Line 12  
     generator_g_gradients = tape.gradient(total_gen_g_loss, generator_g.trainable_variables)
@@ -211,9 +187,8 @@ def train_step_GP(real_x, real_y):
 ##--------------------------------------------  Main Loop  --------------------------------------------
 def main(EPOCHS = 10, testing=False , experiment_flag='_testing'):
   m.set_channels([0,1,2])    
-  #m.set_pretrained_model('resnet')
+  
   time_path = datetime.now().strftime("%Y%m%d-%I%M%S")
-  #experiment_flag = '_TEST'
 
   log_dir="logs/"
   summary_writer = tf.summary.create_file_writer(
@@ -262,5 +237,4 @@ def main(EPOCHS = 10, testing=False , experiment_flag='_testing'):
   m.trained_check(generator_f,time_path+experiment_flag)
 
 
-#main(5,True,'_testing')
 main(20,False,'_exp2_Cycle-WGAN')
