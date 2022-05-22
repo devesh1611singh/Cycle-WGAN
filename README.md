@@ -1,4 +1,4 @@
-# CyccleGANs Improvements
+# CycleGANs Improvements
 
 In this study I propose two image-to-image transaltion models. The less studied, Cycle-WGAN model and the novel, Cycle-WGAN-SM model. 
 
