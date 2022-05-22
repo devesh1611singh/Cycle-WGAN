@@ -8,15 +8,15 @@ from tensorflow.keras.models import Model
 
 ##-------------------------------------------- global variables --------------------------------------------
 
-data_sim = '/data/people/tsingde/thesis/datasets/synth_2021-12-07_16-23-08/'
-data_real_train = '/data/people/tsingde/thesis/datasets/all_good_segmentations/as_images/train/'
-data_real_test = '/data/people/tsingde/thesis/datasets/all_good_segmentations/as_images/test/'
-data_real_val = '/data/people/tsingde/thesis/datasets/all_good_segmentations/as_images/val/'
-save_train = '/data/people/tsingde/thesis/train/'
-examples_file =  '/data/people/tsingde/thesis/Examples.json'
+data_sim = '/sim/'                      #Path to Simulated Dataset
+data_real_train = '/train/'             #Path to train split of the Real Dataset
+data_real_test = '/test/'               #Path to test split of the Real Dataset
+data_real_val = '/val/'                 #Path to validation split of the Real Dataset
+save_train = '/dir/'                    #Path to save the trained models and results
+examples_file =  '/Examples.json'       #Path to json file, indexing to all the samples simulated images which are tested for all the experiments 
 
-img_height_width = 256
-kept_channels = [0,1,2,3,4,5,6,7]  #channels to keep in the one hot encoding
+img_height_width = 256                  #Images are rendered to a fixed size of 256x255 pixels
+kept_channels = [0,1,2,3,4,5,6,7]       #Channels to keep in the one hot encoding
 omitted_channels = []
 pretrained_model = None
 
