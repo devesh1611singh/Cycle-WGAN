@@ -1,3 +1,10 @@
+'''
+Author: Devesh Singh
+Date: 22.05.2022
+
+Explains the model Cycle-WGAN. Where inside the CycleGAN architecture, the generator and discriminator models are trained used Wasserstein distance metric soft 
+constrained by the gradient penalty.  
+'''
 from numpy import True_
 import tensorflow as tf
 from tensorflow_examples.models.pix2pix import pix2pix
