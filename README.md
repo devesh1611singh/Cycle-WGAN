@@ -34,7 +34,7 @@ See model architecture at:
 
 Notice the addition of $n_c$ steps - the number of steps a discriminator (or critic) trains for every generator step. Also notice that now the discriminator networks do not make a binary classification of - real or fake anymore, but rather output a distance metric $\in \mathbb{R}$.
 
-A successful unsupervised I2I translation between the two domains - Aerial images and Maps, by the Cycle-WGAN could be seen in directory Results.
+A successful attempt at unsupervised I2I translation between the two domains - Aerial images and Maps, by the Cycle-WGAN could be seen in directory named Results.
 
 
 ## Cycle-WGAN-SM
