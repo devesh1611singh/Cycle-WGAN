@@ -1,6 +1,5 @@
 # CycleGANs Improvements
-
-In this study, I propose two image-to-image (I2I) translation models. The less studied, Cycle-WGAN model and the novel, Cycle-WGAN-SM model. 
+Image-to-image (I2I) translation is the task of converting images from one domain into images from the other domain. The process of transferring requires a mapping function which changes the style characteristics of images in the source domain into that of images in the target domain while preserving much of the structure and meaning of the images. In this study, I propose two image-to-image (I2I) translation models. The less studied, Cycle-WGAN model and the novel, Cycle-WGAN-SM model. 
 
 ## Cycle-WGAN
 Since the adversarial loss in CycleGANs uses a min-max setup, CycleGANs themselves often face the GAN optimization setbacks. Mode collapse - a scenario where the generator model learns to create only a single or a small set of outputs, is common for CycleGAN models as well. If, for the generator $G(\cdot)$ doing a $A-to-B$ image translation and the discriminator (or critic) $D_B(\cdot)$ distinguishing the real images from the fakes in target data distribution $B$, the Wasserstein loss soft constrained by the gradient penatly is defined as:
